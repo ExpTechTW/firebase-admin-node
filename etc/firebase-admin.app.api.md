@@ -22,8 +22,10 @@ export interface AppOptions {
     credential?: Credential;
     databaseAuthVariableOverride?: object | null;
     databaseURL?: string;
+    disableRetry?: boolean;
     httpAgent?: Agent;
     projectId?: string;
+    retryConfig?: RetryConfig;
     serviceAccountId?: string;
     storageBucket?: string;
 }
@@ -75,6 +77,15 @@ export function refreshToken(refreshTokenPathOrObject: string | object, httpAgen
 
 // @public (undocumented)
 export const SDK_VERSION: string;
+
+// @public
+export interface RetryConfig {
+    backOffFactor?: number;
+    ioErrorCodes?: string[];
+    maxDelayInMillis: number;
+    maxRetries: number;
+    statusCodes?: number[];
+}
 
 // @public (undocumented)
 export interface ServiceAccount {

@@ -18,6 +18,7 @@
 import { Agent } from 'http';
 
 import { Credential } from './credential';
+import { RetryConfig } from '.'
 
 /**
  * Available options to pass to {@link firebase-admin.app#initializeApp}.
@@ -70,6 +71,16 @@ export interface AppOptions {
    * The ID of the Google Cloud project associated with the App.
    */
   projectId?: string;
+
+  /**
+   * The retry configuration that will be used in HttpClient for API Requests.
+   */
+  retryConfig ?: RetryConfig;
+
+  /** 
+  * Completely disable the retry strategy in HttpClient. 
+  */
+  disableRetry ?: boolean;
 
   /**
    * An {@link https://nodejs.org/api/http.html#http_class_http_agent | HTTP Agent}

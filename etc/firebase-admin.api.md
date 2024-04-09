@@ -72,8 +72,10 @@ export interface AppOptions {
     credential?: Credential;
     databaseAuthVariableOverride?: object | null;
     databaseURL?: string;
+    disableRetry?: boolean;
     httpAgent?: Agent;
     projectId?: string;
+    retryConfig?: RetryConfig;
     serviceAccountId?: string;
     storageBucket?: string;
 }
@@ -443,6 +445,15 @@ export namespace projectManagement {
 
 // @public
 export function remoteConfig(app?: App): remoteConfig.RemoteConfig;
+
+// @public
+export interface RetryConfig {
+    backOffFactor?: number;
+    ioErrorCodes?: string[];
+    maxDelayInMillis: number;
+    maxRetries: number;
+    statusCodes?: number[];
+}
 
 // @public (undocumented)
 export namespace remoteConfig {

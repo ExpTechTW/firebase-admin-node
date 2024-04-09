@@ -16,6 +16,7 @@
  */
 
 import { getSdkVersion } from '../utils';
+export { RetryConfig } from '../utils/api-request'
 
 /**
  * Firebase App and SDK initialization.
