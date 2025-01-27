@@ -1330,17 +1330,19 @@ export class Http2SessionHandler {
       const http2Session = http2.connect(url, opts)
 
       http2Session.on('goaway', (errorCode, _, opaqueData) => {
-        throw new FirebaseAppError(
-          AppErrorCodes.NETWORK_ERROR,
-          `Error while making requests: GOAWAY - ${opaqueData.toString()}, Error code: ${errorCode}`
-        );
+        console.log(`Error while making requests: GOAWAY - ${opaqueData.toString()}, Error code: ${errorCode}`)
+        // throw new FirebaseAppError(
+        //   AppErrorCodes.NETWORK_ERROR,
+        //   `Error while making requests: GOAWAY - ${opaqueData.toString()}, Error code: ${errorCode}`
+        // );
       })
 
       http2Session.on('error', (error) => {
-        throw new FirebaseAppError(
-          AppErrorCodes.NETWORK_ERROR,
-          `Error while making requests: ${error}`
-        );
+        console.log(`Error while making requests: ${error}`)
+        // throw new FirebaseAppError(
+        //   AppErrorCodes.NETWORK_ERROR,
+        //   `Error while making requests: ${error}`
+        // );
       })
       return http2Session
     }
